@@ -32,6 +32,7 @@ namespace ApartmentWebTemp
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(IdentityHelper.SetIdentityOptions)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
@@ -66,6 +67,12 @@ namespace ApartmentWebTemp
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            // Create roles here
+            var serviceProvider = app.ApplicationServices
+                                     .GetRequiredService<IServiceProvider>()
+                                     .CreateScope();
+            IdentityHelper.CreateRoles(serviceProvider.ServiceProvider, IdentityHelper.Landlord, IdentityHelper.Tenant).Wait();
         }
     }
 }
