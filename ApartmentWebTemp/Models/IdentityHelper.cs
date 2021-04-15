@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,10 @@ namespace ApartmentWebTemp.Models
 {
     public static class IdentityHelper
     {
+        // Role names
+        public const string Landlord = "Landlord";
+        public const string Tenant = "Tenant";
+
         public static void SetIdentityOptions(IdentityOptions options)
         {
             // Setting sign in options
@@ -24,6 +29,21 @@ namespace ApartmentWebTemp.Models
             // Set lockout options
             options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
             options.Lockout.MaxFailedAccessAttempts = 5;
+        }
+
+        public static async Task CreateRoles(IServiceProvider provider, params string[] roles)
+        {
+            RoleManager<IdentityRole> roleManager = provider.GetRequiredService<RoleManager<IdentityRole>>();
+
+            // Create role if it doesn't exist
+            foreach (string role in roles)
+            {
+                bool doesRoleExist = await roleManager.RoleExistsAsync(role);
+                if(!doesRoleExist)
+                {
+                    await roleManager.CreateAsync(new IdentityRole(role));
+                }
+            }
         }
     }
 }
