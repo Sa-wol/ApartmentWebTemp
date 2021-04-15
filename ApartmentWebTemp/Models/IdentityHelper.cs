@@ -11,7 +11,7 @@ namespace ApartmentWebTemp.Models
         public static void SetIdentityOptions(IdentityOptions options)
         {
             // Setting sign in options
-            options.SignIn.RequireConfirmedEmail = true;
+            options.SignIn.RequireConfirmedEmail = false;
             options.SignIn.RequireConfirmedPhoneNumber = false;
 
             // Set password strength
@@ -20,6 +20,10 @@ namespace ApartmentWebTemp.Models
             options.Password.RequireUppercase = false;
             options.Password.RequiredLength = 8;
             options.Password.RequireNonAlphanumeric = false;
+
+            // Set lockout options
+            options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
+            options.Lockout.MaxFailedAccessAttempts = 5;
         }
     }
 }
