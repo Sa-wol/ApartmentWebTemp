@@ -73,6 +73,8 @@ namespace ApartmentWebTemp
                                      .GetRequiredService<IServiceProvider>()
                                      .CreateScope();
             IdentityHelper.CreateRoles(serviceProvider.ServiceProvider, IdentityHelper.Landlord, IdentityHelper.Tenant).Wait();
+
+            IdentityHelper.CreateDefaultLandlord(serviceProvider.ServiceProvider).Wait();
         }
     }
 }
