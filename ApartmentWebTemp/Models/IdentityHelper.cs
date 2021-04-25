@@ -45,5 +45,30 @@ namespace ApartmentWebTemp.Models
                 }
             }
         }
+
+        internal static async Task CreateDefaultLandlord(IServiceProvider serviceProvider)
+        {
+            const string email = "april@email.com";
+            const string username = "landlord";
+            const string password = "Apartment";
+
+            var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
+
+            // Check if any users are in database
+            if(userManager.Users.Count() == 0)
+            {
+                IdentityUser landlord = new IdentityUser()
+                {
+                    Email = email,
+                    UserName = username,
+                };
+
+                // Create landlord
+                await userManager.CreateAsync(landlord, password);
+
+                // Add to landlord role
+                await userManager.AddToRoleAsync(landlord, Landlord);
+            }
+        }
     }
 }
