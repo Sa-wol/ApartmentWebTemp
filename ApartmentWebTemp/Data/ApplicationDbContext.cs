@@ -15,5 +15,7 @@ namespace ApartmentWebTemp.Data
         }
 
         public DbSet<UnitLease> UnitLeases { get; set; }
+
+        public DbSet<Staff> Staffs { get; set; }
     }
 }
