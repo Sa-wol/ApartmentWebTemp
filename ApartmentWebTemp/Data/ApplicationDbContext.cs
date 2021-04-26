@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using ApartmentWebTemp.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,5 +13,7 @@ namespace ApartmentWebTemp.Data
             : base(options)
         {
         }
+
+        public DbSet<UnitLease> UnitLeases { get; set; }
     }
 }

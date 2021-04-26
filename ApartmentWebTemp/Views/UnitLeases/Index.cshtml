@@ -1,0 +1,83 @@
+﻿@model IEnumerable<ApartmentWebTemp.Models.UnitLease>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UnitNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnitFloor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MonthlyRent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnitDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaseStarting)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaseEnding)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitFloor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MonthlyRent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaseStarting)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaseEnding)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.UserId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.UserId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.UserId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
