@@ -58,4 +58,29 @@ namespace ApartmentWebTemp.Models
         [Display(Name = "Lease Ending Date")]
         public DateTime LeaseEnding { get; set; }
     }
+
+    /// <summary>
+    /// Creates new staff for record keeping
+    /// </summary>
+    public class Staff : LeasingOfficeManagement
+    {
+        // Unique ID related to Staff
+        public int StaffId { get; set; }
+
+        // Staff role within apartment complex
+        [Display(Name = "Staff Role")]
+        public string StaffRole { get; set; }
+
+        // The starting employment date for staff
+        [Display(Name = "Employment Starting Date")]
+        public DateTime EmploymentStartDate { get; set; }
+
+        // The ending employment date for staff
+        [Display(Name = "Employment Ending Date")]
+        public DateTime EmployemntEndDate { get; set; }
+
+        // The wage staff is given bi-weekly
+        [Display(Name = "Staff Wage")]
+        public decimal StaffWage { get; set; }
+    }
 }
