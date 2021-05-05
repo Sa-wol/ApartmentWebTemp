@@ -1,5 +1,6 @@
 using ApartmentWebTemp.Data;
 using ApartmentWebTemp.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -36,6 +37,21 @@ namespace ApartmentWebTemp
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            // External Authenticator
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            })
+                .AddCookie(options =>
+                {
+                    options.LoginPath = "/account/goggle-login";
+                })
+                .AddGoogle(options =>
+                {
+                    options.ClientId = "397718342472-741liqc2pkrgeovqa7o131u91akkq3c4.apps.googleusercontent.com";
+                    options.ClientSecret = "-6NjwxZ-l1Jto4A3KIblxQaU";
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
