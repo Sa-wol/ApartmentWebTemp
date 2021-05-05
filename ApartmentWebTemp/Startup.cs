@@ -38,7 +38,7 @@ namespace ApartmentWebTemp
             services.AddControllersWithViews();
             services.AddRazorPages();
 
-            // External Authenticator login
+            // External Authenticator
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
