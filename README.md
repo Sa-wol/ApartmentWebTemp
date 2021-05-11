@@ -11,3 +11,6 @@ See [COMING SOON]()
 - .NET Core 3.1.X SDK is required
 - Clone the repo
 - Build and run the project
+
+
+TestRun
