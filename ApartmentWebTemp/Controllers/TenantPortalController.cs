@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApartmentWebTemp.Controllers
 {
-    public class TenantPortalController1 : Controller
+    public class TenantPortalController : Controller
     {
         public IActionResult Index()
         {
