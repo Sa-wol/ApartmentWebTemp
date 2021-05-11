@@ -12,5 +12,10 @@ namespace ApartmentWebTemp.Controllers
         {
             return View();
         }
+
+        public IActionResult Maintenance()
+        {
+            return View();
+        }
     }
 }
