@@ -4,9 +4,9 @@
 
 Website template for apartments web page. 
 This site will keep track of tenants, rent payment, available units, and apartment contact info.
-See FEATURES for detailed information
+See FEATURES for detailed information.
 
-##Features
+## Features
 - Home page
 	- Amenities
 	- Location
