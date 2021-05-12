@@ -7,15 +7,10 @@ using System.Threading.Tasks;
 
 namespace ApartmentWebTemp.Controllers
 {
-    [Authorize(Roles = "Tenant")]
-    public class TenantPortalController : Controller
+    [Authorize(Roles = "Landlord")]
+    public class PropertyManagementController : Controller
     {
         public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Maintenance()
         {
             return View();
         }
