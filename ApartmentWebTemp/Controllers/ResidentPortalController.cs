@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ApartmentWebTemp.Controllers
 {
     [Authorize(Roles = "Tenant")]
-    public class TenantPortalController : Controller
+    public class ResidentPortalController : Controller
     {
         public IActionResult Index()
         {
