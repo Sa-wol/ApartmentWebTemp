@@ -27,7 +27,7 @@ See FEATURES for detailed information.
 - Contact us
 
 ## Coding Guidelines
-See [Guidelines](CodeGuidelines.md)
+See [Guidelines](https://github.com/Sa-wol/ApartmentWebTemp/blob/master/CodingGuidelines.md)
 
 ## Running this project
 - .NET Core 3.1.X SDK is required
