@@ -41,7 +41,7 @@ namespace ApartmentWebTemp
             // External Authenticator
             services.AddAuthentication(options =>
             {
-                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            
             })
                 .AddCookie(options =>
                 {
