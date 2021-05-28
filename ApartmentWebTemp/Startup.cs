@@ -50,13 +50,13 @@ namespace ApartmentWebTemp
                 })
                 .AddGoogle(options =>
                 {
-                    options.ClientId = "397718342472-741liqc2pkrgeovqa7o131u91akkq3c4.apps.googleusercontent.com";
-                    options.ClientSecret = "-6NjwxZ-l1Jto4A3KIblxQaU";
+                    options.ClientId = Configuration["options.ClientId"];
+                    options.ClientSecret = Configuration["options.ClientSecret"];
                 })
                 .AddFacebook(option =>
                 {
-                    option.AppId = "1588095541383404";
-                    option.AppSecret = "2ff9364ba03f3e9446587725b943f559";
+                    option.AppId = Configuration["option.AppId"];
+                    option.AppSecret = Configuration["option.AppSecret"];
                 });
         }
 
