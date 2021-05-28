@@ -41,32 +41,5 @@ namespace ApartmentWebTemp.Controllers
                                });
             return Json(claims);
         }
-
-        /// <summary>
-        /// User/Tenant can use a Facebook account to register an account on the website
-        /// </summary>
-        /// <returns></returns>
-        [Route("facebook-login")]
-        public IActionResult FacebookLogin()
-        {
-            var properties = new AuthenticationProperties { RedirectUri = Url.Action("FacebookResponse") };
-            return Challenge(properties, FacebookDefaults.AuthenticationScheme);
-        }
-
-        [Route("facebook-response")]
-        public async Task<IActionResult> FacebookResponse()
-        {
-            var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            var claims = result.Principal.Identities.FirstOrDefault()
-                               .Claims.Select(claim => new
-                               {
-                                   claim.Issuer,
-                                   claim.OriginalIssuer,
-                                   claim.Type,
-                                   claim.Value
-                               });
-            return Json(claims);
-
-        }
     }
 }

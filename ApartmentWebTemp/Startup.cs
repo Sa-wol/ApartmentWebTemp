@@ -52,11 +52,6 @@ namespace ApartmentWebTemp
                 {
                     options.ClientId = Configuration["options.ClientId"];
                     options.ClientSecret = Configuration["options.ClientSecret"];
-                })
-                .AddFacebook(option =>
-                {
-                    option.AppId = Configuration["option.AppId"];
-                    option.AppSecret = Configuration["option.AppSecret"];
                 });
         }
 
