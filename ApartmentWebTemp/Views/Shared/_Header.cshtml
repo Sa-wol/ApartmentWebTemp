@@ -47,16 +47,16 @@
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                                <a class="nav-link" data-after="Register" asp-area="Identity" asp-page="/Account/Register">Register</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                                <a class="nav-link" data-after="Login" asp-area="Identity" asp-page="/Account/Login">Login</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="ResidentPortal" asp-action="Index">Resident Portal</a>
+                                <a class="nav-link" data-after="Resident Portal" asp-area="" asp-controller="ResidentPortal" asp-action="Index">Resident Portal</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="PropertyManagement" asp-action="Index">Property Management</a>
+                                <a class="nav-link" data-after="Property Management" asp-area="" asp-controller="PropertyManagement" asp-action="Index">Property Management</a>
                             </li>
                         }
                     </ul>
