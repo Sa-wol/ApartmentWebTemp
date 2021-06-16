@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -7,36 +12,6 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    @*<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light">
-        <div class="navbar">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Apartment Name</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                <partial name="_LoginPartial" />
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Amenities">Amenities</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="FloorPlans">Floor Plans</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Gallery">Gallery</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ContactUs">Contact Us</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>*@
-    <!-- Header -->
     <section id="header">
         <div class="header container-fluid">
             <div class="nav-bar">
@@ -46,16 +21,49 @@
                 <div class="nav-list">
                     <div class="hamburger"><div class="bar"></div></div>
                     <ul>
-                        <li><a href="#" data-after="Home">Home</a></li>
+                        <li><a asp-controller="Home" asp-action="Index" data-after="Home">Home</a></li>
                         <li><a href="#" data-after="Amenities">Amenities</a></li>
                         <li><a href="#" data-after="Floorplans">Floorplans</a></li>
                         <li><a href="#" data-after="Gallery">Gallery</a></li>
                         <li><a href="#" data-after="Contact">Contact</a></li>
+
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-after="Resident Portal" asp-area="" asp-controller="ResidentPortal" asp-action="Index">Resident Portal</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-after="Property Management" asp-area="" asp-controller="PropertyManagement" asp-action="Index">Property Management</a>
+                            </li>
+                            <li class="nav-item">
+                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    <button type="submit" class="nav-link btn btn-link">Logout</button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" data-after="Register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-after="Login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-after="Resident Portal" asp-area="" asp-controller="ResidentPortal" asp-action="Index">Resident Portal</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-after="Property Management" asp-area="" asp-controller="PropertyManagement" asp-action="Index">Property Management</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
         </div>
     </section>
     <!-- End Header -->
-    </body>
+</body>
 </html>
